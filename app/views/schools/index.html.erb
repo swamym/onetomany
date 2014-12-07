@@ -1,0 +1,22 @@
+<h1>All Students with Schools</h1>
+<table>
+  <tr>
+    <th>School address</th>
+    <th>Student Name</th>
+    <th>Student Age</th>
+    <th></th>
+  </tr>
+
+<% @schools.each do |school| %>
+<% school.students.each do |student| %>
+  <tr>
+    <td><%= school.address %></td>
+    <td><%= student.name %></td>
+    <td><%= student.age %></td>
+    <td></td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
+
+<%= link_to 'New School', new_school_path %>

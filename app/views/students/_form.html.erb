@@ -1,0 +1,29 @@
+<%= semantic_form_for([@school, @student]) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.input :name %>
+  </div>
+  <div class="field">
+    <%= f.input :age %>
+  </div>
+  <%= f.fields_for :photo, :multipart => true do |f| %>
+    <div class="field">
+    <%= f.file_field :avatar %>
+  </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
